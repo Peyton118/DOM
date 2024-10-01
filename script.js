@@ -13,9 +13,9 @@ function listLength(){
 
 function createListElement() {
 	// implement creates an element "li"
-	li = document.createElement('li')
+	var li = document.createElement('li')
 	// implement makes text from input field the li text
-	li.appendChild(document.createTextNode(input.value))
+	li.append(input.value)
 	// implement adds li to ul
 	ul.appendChild(li)
 	// implement Reset text input field
@@ -25,7 +25,11 @@ function createListElement() {
 	//START STRIKETHROUGH
 	// because it's in the function, it only adds it for new items
 	function crossOut() {
-		li.style.textDecoration = 'line-through'
+		if (li.style.textDecoration == "" || li.style.textDecoration == undefined){
+			li.style.textDecoration = 'line-through'
+		} else {
+			li.style.textDecoration = ""
+		}
 	}
 
 	li.addEventListener("click",crossOut);
@@ -38,7 +42,7 @@ function createListElement() {
 		//Use the implemented function from below here
 	deleteButton.addEventListener('click', deleteListItem)
 	// END ADD DELETE BUTTON
-	deleteButton.innerHTML = "X"
+		deleteButton.innerHTML = "X"
 
 	//ADD CLASS DELETE (DISPLAY: NONE)
 	function deleteListItem(){
@@ -65,5 +69,3 @@ function addListAfterKeypress(event) {
 enterButton.addEventListener("click",addListAfterClick);
 
 input.addEventListener("keypress", addListAfterKeypress);
-
-// e
